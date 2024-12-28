@@ -15,7 +15,7 @@ jobs:
 
       - uses: xctions/workflows/actions/put-local@main
         with:
-          path: tmp/test
+          path: /tmp/test
 
       - uses: xctions/workflows/actions/get-local@main
         id: tmp
