@@ -1,0 +1,28 @@
+name: "test get-local, put-local"
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  ok1:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Create New Directory
+        run: |
+          mkdir -p /tmp/test
+          echo "Hello World" > /tmp/test/hello.txt
+
+      - uses: xctions/workflows/actions/put-local@main
+        with:
+          path: tmp/test
+
+      - uses: xctions/workflows/actions/get-local@main
+        id: tmp
+        with:
+          path: tmp/test
+
+      - name: Print File Content
+        run: |
+          cat ${{ steps.tmp.outputs.path }}/tmp/test/hello.txt
+          
