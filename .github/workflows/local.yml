@@ -20,7 +20,7 @@ jobs:
       - uses: xctions/workflows/actions/get-local@main
         id: tmp
         with:
-          path: tmp/test
+          path: /tmp/test
 
       - name: Print File Content
         run: |
