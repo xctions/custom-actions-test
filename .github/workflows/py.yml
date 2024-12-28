@@ -1,4 +1,4 @@
-name: "test get-local, put-local"
+name: test send-notification
 
 on:
   workflow_dispatch: 
