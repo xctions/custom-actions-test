@@ -1,0 +1,26 @@
+name: "test get-local, put-local"
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  ok1:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Setup Python Environment
+        id: py
+        uses: xctions/workflows/actions/exec-py@main
+        with:
+          module: send_notification        
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TITLE: test
+          DESCRIPTION: test
+          STATUS: success
+          FIELDS: |
+            - name: test
+              value: test
+          DEBUG: true
+
+
