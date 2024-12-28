@@ -19,8 +19,8 @@ jobs:
           DESCRIPTION: test
           STATUS: success
           FIELDS: |
-            - name: test
-              value: test
+            name:: test
+            value:: test
           DEBUG: true
 
 
