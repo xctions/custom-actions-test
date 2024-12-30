@@ -19,4 +19,6 @@ jobs:
           pr_number: ${{ github.event.pull_request.number }}
           body: |
             Hello, World! ${{ steps.date.outputs.date }}
+            <!-- TERRAFORM PLAN -->
             This is a test message.
+            <!-- TERRAFORM PLAN -->
