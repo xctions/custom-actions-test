@@ -9,11 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:   
+      - name: current date
+        id: date
+        run: echo "::set-output name=date::$(date)"
       - name: PR COMMENT
         uses: xctions/workflows/actions/pr-comment@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ github.event.pull_request.number }}
           body: |
-            Hello, World! $(date)
+            Hello, World! ${{ steps.date.outputs.date }}
             This is a test message.
