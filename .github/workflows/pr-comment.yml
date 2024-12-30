@@ -15,5 +15,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ github.event.pull_request.number }}
           body: |
-            Hello, World!
+            Hello, World! $(date)
             This is a test message.
