@@ -1,0 +1,19 @@
+name: Test PR Comment
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:   
+      - name: PR COMMENT
+        uses: xctions/workflows/actions/pr-comment@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ github.event.number }}
+          body: |
+            Hello, World!
+            This is a test message.
