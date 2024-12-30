@@ -13,7 +13,7 @@ jobs:
         uses: xctions/workflows/actions/pr-comment@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          pr_number: ${{ github.event.number }}
+          pr_number: ${{ github.event.pull_request.number }}
           body: |
             Hello, World!
             This is a test message.
