@@ -1,0 +1,20 @@
+name: Upload Artifact
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Create a file to share
+      run: echo "Hello, World!" > hello.txt
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: shared-artifact
+        path: hello.txt
