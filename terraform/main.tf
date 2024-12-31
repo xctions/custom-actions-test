@@ -4,6 +4,6 @@ terraform {
 
 resource "local_file" "file1" {
   filename        = "file1.txt"
-  content         = "okok"
+  content         = "okok2"
   file_permission = 0644
 }
