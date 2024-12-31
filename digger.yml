@@ -1,4 +1,24 @@
 no-backend: true
 projects:
-- name: production
-  dir: terraform
+- name: production  # The name of the project
+  dir: terraform  # The directory containing the Terraform configuration
+  workspace: default  # The Terraform workspace to use
+  terragrunt: false  # Whether to use Terragrunt
+  workflow: dev  # The workflow to use for this project
+  # include_patterns: []  # Glob patterns to include specific files or directories
+  # exclude_patterns: []  # Glob patterns to exclude specific files or directories
+
+workflows:
+  dev:
+    env_vars:
+      state:
+        - name: TF_LOG
+          value: TRACE
+      commands:
+        - name: TF_LOG
+          value: TRACE
+
+    # plan:
+    #   steps:
+    #     - init:
+    #       extra_args: ["-backend-config=backend.hcl"]
