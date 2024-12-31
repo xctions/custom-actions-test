@@ -12,6 +12,7 @@ jobs:
       - name: current date
         id: date
         run: echo "::set-output name=date::$(date)"
+
       - name: PR COMMENT
         uses: xctions/workflows/actions/pr-comment@main
         with:
@@ -22,3 +23,4 @@ jobs:
             <!-- TERRAFORM PLAN -->
             This is a test message.
             <!-- TERRAFORM PLAN -->
+      

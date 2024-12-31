@@ -1,0 +1,36 @@
+name: Fetch PR Comment's Context
+on:
+  workflow_dispatch: 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:   
+     
+
+      - name: Fetch PR COMMENT Context
+        uses: xctions/workflows/actions/add-or-update-pr-comment@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ github.event.pull_request.number }}
+          body: |
+            Hello, World! ${{ steps.date.outputs.date }}
+            <!-- TERRAFORM PLAN -->
+            This is a test message.
+            <!-- TERRAFORM PLAN -->
+
+      - name: Fetch PR COMMENT Context
+        id: find
+        uses: xctions/workflows/actions/find-pr-comment@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN}}
+          pr_number: ${{ github.event.pull_request.number }}
+          find_section: <!-- TERRAFORM PLAN -->
+
+      - name: Print PR COMMENT Context
+        run: |
+          echo ========================================
+          echo ${{ steps.find.outputs.comment_id }}
+          echo ${{ steps.find.outputs.result }}
+          echo ========================================
