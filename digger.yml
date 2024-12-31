@@ -18,7 +18,7 @@ workflows:
         - name: TF_LOG
           value: TRACE
 
-    plan:
-      steps:
-        - init:
-          extra_args: ["-backend-config=backend.hcl"]
+    # plan:
+    #   steps:
+    #     - init:
+    #       extra_args: ["-backend-config=backend.hcl"]
