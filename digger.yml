@@ -1,3 +1,4 @@
+no-backend: true
 projects:
 - name: production
   dir: terraform
