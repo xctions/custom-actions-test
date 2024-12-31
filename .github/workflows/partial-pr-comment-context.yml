@@ -21,7 +21,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ inputs.pr_number}}
-          partial_section: <!-- TERRAFORM PLAN -->
+          partial_delimeter: <!-- TERRAFORM PLAN -->
           body: |
             Hello, World! ${{ steps.date.outputs.date }}
             <!-- TERRAFORM PLAN -->
@@ -34,7 +34,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ inputs.pr_number }}
-          partial_section: <!-- TERRAFORM PLAN -->
+          partial_delimeter: <!-- TERRAFORM PLAN -->
 
       - name: Print PR COMMENT Context
         run: |
