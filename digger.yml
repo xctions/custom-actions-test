@@ -5,7 +5,7 @@ projects:
   workspace: default  # The Terraform workspace to use
   terragrunt: false  # Whether to use Terragrunt
   workflow: dev  # The workflow to use for this project
-  include_patterns: ["../modules/**"]  # Glob patterns to include specific files or directories
+  include_patterns: []  # Glob patterns to include specific files or directories
   exclude_patterns: []  # Glob patterns to exclude specific files or directories
 
 workflows:
