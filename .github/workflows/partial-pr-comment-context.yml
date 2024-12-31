@@ -1,4 +1,4 @@
-name: PR Comment Update and Fetch
+name: Partial PR Comment Update and Fetch
 on:
   workflow_dispatch: 
 
@@ -21,6 +21,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ inputs.pr_number}}
+          partial_section: <!-- TERRAFORM PLAN -->
           body: |
             Hello, World! ${{ steps.date.outputs.date }}
             <!-- TERRAFORM PLAN -->
@@ -39,7 +40,8 @@ jobs:
         run: |
           echo ========================================
           echo ${{ steps.find.outputs.comment_id }}
-          echo ${{ steps.find.outputs.result }}
+          echo ${{ steps.find.outputs.partial_section }}
+          echo ${{ steps.find.outputs.body }}
           echo ========================================
 
-
+          
