@@ -40,7 +40,7 @@ jobs:
           echo ========================================
           echo ${{ steps.find.outputs.comment_id }}
           echo cat EOF<<
-            ${{ steps.find.outputs.result }}
+            ${{ steps.find.outputs.partial_body }}
           EOF
           echo ========================================
 

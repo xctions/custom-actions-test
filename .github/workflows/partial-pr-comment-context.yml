@@ -40,8 +40,8 @@ jobs:
         run: |
           echo ========================================
           echo ${{ steps.find.outputs.comment_id }}
-          echo ${{ steps.find.outputs.partial_body }}
-          echo ${{ steps.find.outputs.body }}
+          echo "${{ steps.find.outputs.partial_body }}"
+          echo "${{ steps.find.outputs.body }}"
           echo ========================================
 
           
