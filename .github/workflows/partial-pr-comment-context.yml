@@ -34,13 +34,13 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ inputs.pr_number }}
-          find_section: <!-- TERRAFORM PLAN -->
+          partial_section: <!-- TERRAFORM PLAN -->
 
       - name: Print PR COMMENT Context
         run: |
           echo ========================================
           echo ${{ steps.find.outputs.comment_id }}
-          echo ${{ steps.find.outputs.partial_section }}
+          echo ${{ steps.find.outputs.partial_body }}
           echo ${{ steps.find.outputs.body }}
           echo ========================================
 
