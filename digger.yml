@@ -32,6 +32,6 @@ workflows:
     apply:
       steps:
         - run: "terraform fmt -check -diff -recursive"
-          shell: zsh
+          shell: bash
         - init
         - apply
