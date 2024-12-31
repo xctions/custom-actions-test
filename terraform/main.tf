@@ -14,7 +14,7 @@ resource "google_compute_instance" "it" {
   machine_type = "e2-micro"
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "debian-cloud/debian-12"
     }
   }
   network_interface {

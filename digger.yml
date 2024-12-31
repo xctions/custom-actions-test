@@ -1,6 +1,7 @@
 telemetry: false
 # auto_merge: true
 no-backend: true
+log_level: DEBUG
 projects:
 - name: production  # The name of the project
   dir: terraform  # The directory containing the Terraform configuration
@@ -15,10 +16,10 @@ workflows:
     env_vars:
       state:
         - name: TF_LOG
-          value: TRACE
+          value: DEBUG
       commands:
         - name: TF_LOG
-          value: TRACE
+          value: DEBUG
 
     plan:
       steps:
