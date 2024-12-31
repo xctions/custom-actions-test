@@ -31,8 +31,8 @@ jobs:
         id: find
         uses: xctions/workflows/actions/find-pr-comment@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN}}
-          pr_number: ${{ inputs.pr_number}} }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ inputs.pr_number }}
           find_section: <!-- TERRAFORM PLAN -->
 
       - name: Print PR COMMENT Context
