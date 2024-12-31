@@ -39,7 +39,9 @@ jobs:
         run: |
           echo ========================================
           echo ${{ steps.find.outputs.comment_id }}
-          echo "${{ steps.find.outputs.result }}"
+          echo cat EOF<<
+            ${{ steps.find.outputs.result }}
+          EOF
           echo ========================================
 
 
