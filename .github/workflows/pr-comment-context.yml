@@ -11,13 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:   
-     
+      - name: current date
+        id: date
+        run: echo "::set-output name=date::$(date)"
+
 
       - name: Fetch PR COMMENT Context
         uses: xctions/workflows/actions/add-or-update-pr-comment@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          pr_number: ${{ github.event.pull_request.number }}
+          pr_number: ${{ inputs.pr_number}}
           body: |
             Hello, World! ${{ steps.date.outputs.date }}
             <!-- TERRAFORM PLAN -->
