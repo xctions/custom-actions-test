@@ -39,9 +39,11 @@ jobs:
       - name: Print PR COMMENT Context
         run: |
           echo ========================================
-          echo ${{ steps.find.outputs.comment_id }}
-          echo "${{ steps.find.outputs.partial_body }}"
-          echo "${{ steps.find.outputs.body }}"
+          echo "comment_id: ${{ steps.find.outputs.comment_id }}"
+          echo ========================================
+          echo "partial_body: ${{ steps.find.outputs.partial_body }}"
+          echo ========================================
+          echo "body: ${{ steps.find.outputs.body }}"
           echo ========================================
 
           
