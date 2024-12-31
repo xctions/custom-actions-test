@@ -1,0 +1,49 @@
+name: Update Partial PR Comment Update and Fetch
+on:
+  workflow_dispatch: 
+
+    inputs:
+      pr_number:
+        description: 'Pull Request Number'
+        required: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:   
+      - name: current date
+        id: date
+        run: echo "::set-output name=date::$(date)"
+
+      - name: Fetch PR COMMENT Context
+        id: find
+        uses: xctions/workflows/actions/find-pr-comment@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ inputs.pr_number }}
+          partial_delimeter: <!-- TERRAFORM CONTENT -->
+
+      - name: Update Partial PR COMMENT
+        id: update
+        uses: xctions/workflows/actions/update-partial-pr-comment@main
+        with:
+          pr_number: ${{ inputs.pr_number }}
+          partial_delimeter: <!-- TERRAFORM PLAN -->
+          body: |
+            # TERRAFORM APPLY 
+            ## THIS IS UPDATED CONTENT ${{ steps.date.outputs.date }}
+            <!-- TERRAFORM CONTENT -->
+            {{ steps.find.outputs.partial_body }}
+            <!-- TERRAFORM CONTENT -->
+
+      - name: Print PR COMMENT Context
+        run: |
+          echo ========================================
+          echo "comment_id: ${{ steps.find.outputs.comment_id }}"
+          echo ========================================
+          echo "partial_body: ${{ steps.find.outputs.partial_body }}"
+          echo ========================================
+          echo "body: ${{ steps.find.outputs.body }}"
+          echo ========================================
+
+          
