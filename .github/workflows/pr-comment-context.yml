@@ -2,6 +2,10 @@ name: Fetch PR Comment's Context
 on:
   workflow_dispatch: 
 
+    inputs:
+      pr_number:
+        description: 'Pull Request Number'
+        required: true
 jobs:
   test:
     runs-on: ubuntu-latest
