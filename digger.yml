@@ -1,3 +1,5 @@
+telemetry: false
+# auto_merge: true
 no-backend: true
 projects:
 - name: production  # The name of the project
@@ -18,7 +20,11 @@ workflows:
         - name: TF_LOG
           value: TRACE
 
-    # plan:
-    #   steps:
-    #     - init:
-    #       extra_args: ["-backend-config=backend.hcl"]
+    plan:
+      steps:
+        - init
+        - plan
+        - run: infracost breakdown --path=. | tee -a $DIGGER_OUT
+        - run: git checkout $DEFAULT_BRANCH && infracost breakdown --path . --format=json --out-file=$RUNNER_TEMP/infracost-base-${PROJECT_NAME}.json && git fetch origin $PR_BRANCH && git checkout $PR_BRANCH
+        - run: infracost diff --path=. --compare-to=$RUNNER_TEMP/infracost-base-${PROJECT_NAME}.json | tee -a $DIGGER_OUT
+          # extra_args: ["-backend-config=backend.hcl"]
