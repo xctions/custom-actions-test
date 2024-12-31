@@ -9,9 +9,9 @@ terraform {
 }
 
 resource "google_compute_instance" "it" {
-  name         = "test-instance"
+  name         = "test-instance2"
   zone         = "us-central1-a"
-  machine_type = "n1-standard-1"
+  machine_type = "e2-micro"
   boot_disk {
     initialize_params {
       image = "debian-cloud/debian-9"
