@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "google_compute_instance" "it" {
-  name         = "test-instance2"
+  name         = "test-instance22"
   zone         = "us-central1-a"
   machine_type = "e2-micro"
   boot_disk {
