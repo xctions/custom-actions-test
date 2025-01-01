@@ -1,6 +1,7 @@
 telemetry: false
 # auto_merge: true
 no-backend: true
+log_level: DEBUG
 projects:
 - name: production  # The name of the project
   dir: terraform  # The directory containing the Terraform configuration
@@ -15,10 +16,10 @@ workflows:
     env_vars:
       state:
         - name: TF_LOG
-          value: TRACE
+          value: DEBUG
       commands:
         - name: TF_LOG
-          value: TRACE
+          value: DEBUG
 
     plan:
       steps:
@@ -28,3 +29,10 @@ workflows:
         - run: git checkout $DEFAULT_BRANCH && infracost breakdown --path . --format=json --out-file=$RUNNER_TEMP/infracost-base-${PROJECT_NAME}.json && git fetch origin $PR_BRANCH && git checkout $PR_BRANCH
         - run: infracost diff --path=. --compare-to=$RUNNER_TEMP/infracost-base-${PROJECT_NAME}.json | tee -a $DIGGER_OUT
           # extra_args: ["-backend-config=backend.hcl"]
+    
+    apply:
+      steps:
+        - run: "terraform fmt -check -diff -recursive"
+          shell: bash
+        - init
+        - apply
